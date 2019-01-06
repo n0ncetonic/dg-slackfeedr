@@ -88,9 +88,11 @@ func main() {
 				<-forever
 			}
 			// Feed Parsing/posting here
-			if event.UserAgent == "feedmonitor" {
-				log.Printf("%v", event.Message)
+			if event.UserAgent != "feedmonitor" {
+				break
 			}
+
+			log.Printf("%v", event.Message)
 
 			feedMap := make(map[string]interface{})
 
